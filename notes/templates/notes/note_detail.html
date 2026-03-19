@@ -1,0 +1,22 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+<div class="container detail-container">
+    <div class="glass-panel note-detail-card">
+        <h1 class="detail-title">{{ note.title }}</h1>
+        <p class="detail-date">Created: {{ note.created_at|date:"F j, Y, g:i a" }}</p>
+        {% if note.updated_at != note.created_at %}
+        <p class="detail-date">Updated: {{ note.updated_at|date:"F j, Y, g:i a" }}</p>
+        {% endif %}
+        <div class="detail-content">
+            {{ note.content|linebreaks }}
+        </div>
+        <div class="detail-actions">
+            <a href="{% url 'note_list' %}" class="btn btn-secondary">Back to Diary</a>
+            <div class="right-actions">
+                <a href="{% url 'note_update' note.pk %}" class="btn btn-primary edit-btn">Edit</a>
+                <a href="{% url 'note_delete' note.pk %}" class="btn btn-danger delete-btn">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

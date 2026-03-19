@@ -1,0 +1,28 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="header-actions">
+        <h1>My Diary</h1>
+        <a href="{% url 'note_create' %}" class="btn btn-primary primary-glow">+ Add Entry</a>
+    </div>
+    <div class="notes-grid">
+        {% for note in notes %}
+        <div class="note-card glass-panel">
+            <a href="{% url 'note_detail' note.pk %}" class="note-title-link">
+                <h2 class="note-title">{{ note.title }}</h2>
+            </a>
+            <p class="note-preview">{{ note.content|truncatechars:100 }}</p>
+            <p class="note-date">{{ note.created_at|date:"M d, Y" }}</p>
+            <div class="note-actions">
+                <a href="{% url 'note_update' note.pk %}" class="btn btn-outline edit-btn">Edit</a>
+                <a href="{% url 'note_delete' note.pk %}" class="btn btn-outline delete-btn">Delete</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-state glass-panel">
+            <p>No entries found. Create your first entry!</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
