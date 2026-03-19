@@ -1,9 +1,0 @@
-#:schema https://workers.cloudflare.com/schemas/v1/wrangler.json
-name = "mydairy-django-main"
-main = "worker.py"
-compatibility_date = "2024-03-19"
-compatibility_flags = ["python_workers"]
-
-[vars]
-# Replace this with your actual Render URL after deployment
-RENDER_URL = "https://mydairy-django.onrender.com"

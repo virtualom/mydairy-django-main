@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-200 text-cream-100 font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-300;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-amber-700 rounded-full;
+  }
+
+  ::selection {
+    @apply bg-amber-600/30 text-cream-50;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-amber-600 to-amber-700 text-dark-200 font-semibold
+           px-6 py-2.5 rounded-xl shadow-glow
+           hover:from-amber-500 hover:to-amber-600 hover:shadow-glow-lg
+           transition-all duration-300 ease-out
+           active:scale-[0.97];
+  }
+
+  .btn-secondary {
+    @apply border border-amber-700/50 text-amber-400
+           px-6 py-2.5 rounded-xl
+           hover:bg-amber-900/20 hover:border-amber-600
+           transition-all duration-300;
+  }
+
+  .btn-danger {
+    @apply bg-red-900/30 border border-red-700/40 text-red-400
+           px-4 py-2 rounded-xl
+           hover:bg-red-900/50 hover:border-red-600
+           transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-dark-300/80 backdrop-blur-sm border border-amber-900/20
+           rounded-2xl p-6
+           hover:border-amber-700/30 hover:shadow-glow
+           transition-all duration-300;
+  }
+
+  .input-field {
+    @apply w-full bg-dark-400/60 border border-amber-900/30
+           text-cream-100 placeholder-cream-200/30
+           rounded-xl px-4 py-3
+           focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-600/30
+           transition-all duration-200;
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+           bg-amber-900/30 text-amber-300 border border-amber-700/30
+           hover:bg-amber-900/50 transition-colors duration-200;
+  }
+
+  .mood-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .glass {
+    @apply bg-dark-300/50 backdrop-blur-xl border border-amber-900/10;
+  }
+}
+
+/* React Quill dark theme overrides */
+.ql-toolbar.ql-snow {
+  border-color: rgba(255, 160, 0, 0.2) !important;
+  background: rgba(22, 17, 12, 0.6) !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.ql-container.ql-snow {
+  border-color: rgba(255, 160, 0, 0.2) !important;
+  background: rgba(22, 17, 12, 0.4) !important;
+  border-radius: 0 0 12px 12px !important;
+  font-family: 'Inter', sans-serif !important;
+  color: #FFF9E6 !important;
+  min-height: 200px;
+}
+
+.ql-editor {
+  min-height: 200px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.ql-editor.ql-blank::before {
+  color: rgba(255, 249, 230, 0.25) !important;
+  font-style: normal !important;
+}
+
+.ql-snow .ql-stroke {
+  stroke: #FFD54F !important;
+}
+
+.ql-snow .ql-fill {
+  fill: #FFD54F !important;
+}
+
+.ql-snow .ql-picker {
+  color: #FFD54F !important;
+}
+
+.ql-snow .ql-picker-options {
+  background: #1B1610 !important;
+  border-color: rgba(255, 160, 0, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 193, 7, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(255, 193, 7, 0.25); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
